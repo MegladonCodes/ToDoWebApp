@@ -1,0 +1,65 @@
+﻿@page
+@model ToDoApp.Pages.TaskPages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>New Task</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TaskItem.Description" class="control-label"></label>
+                <input asp-for="TaskItem.Description" class="form-control" />
+                <span asp-validation-for="TaskItem.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <!--Drop Down List-->
+                <label asp-for="TaskItem.Category" class="control-label"></label>
+                <select asp-for="TaskItem.Category" name="TaskItem.Category" class="form-control">
+                    <option value="">Select a category</option>
+                    <option value="Work">Work</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Home">Home</option>
+                </select>
+                <span asp-validation-for="TaskItem.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaskItem.StartDate" class="control-label"></label>
+                <input asp-for="TaskItem.StartDate" class="form-control" />
+                <span asp-validation-for="TaskItem.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaskItem.EndDate" class="control-label"></label>
+                <input asp-for="TaskItem.EndDate" class="form-control" />
+                <span asp-validation-for="TaskItem.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <!--Drop Down List-->
+                <label asp-for="TaskItem.Status" class="control-label"></label>
+                <select asp-for="TaskItem.Status" name="TaskItem.Status" class="form-control">
+                    <option value="">Select a Status</option>
+                    <option value="Incomplete">Incomplete</option>
+                    <option value="Complete">Complete</option>
+                </select>
+                <span asp-validation-for="TaskItem.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
